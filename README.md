@@ -1,2 +1,12 @@
-# Bio-CPS-Device-Security-Anomaly-Detection
-Academic project done under the supervision of a senior professor at my university
+# Anomaly Detection using Gen AI Models
+
+This project focuses on detecting anomalies using Generative Adversarial Networks (GAN) and Variational Autoencoders (VAE) on the BIDMC dataset. The BIDMC dataset contains parameters such as Heart Rate, Pulse Rate, SpO2, and AVR, which are critical in identifying abnormal patterns.
+
+First, we implemented the GAN model. GANs consist of a generator and a discriminator that work together in a competitive setting. The generator creates synthetic data that closely resembles the real data, while the discriminator evaluates the authenticity of the generated data. By iteratively training these two components, the GAN becomes proficient at generating realistic data. For anomaly detection, we trained the GAN on the normal data samples from the BIDMC dataset. After training, we used the generator to produce new data samples and compared them with the original dataset using the discriminator's output. Significant deviations indicated potential anomalies.
+
+Next, we employed the VAE model. VAEs are probabilistic models that encode input data into a latent space and then decode it back to the original space. The VAE consists of an encoder that compresses the data into a lower-dimensional latent space and a decoder that reconstructs the data from this latent representation. By training the VAE on the normal samples from the BIDMC dataset, we learned a compact representation of the data. Anomalies were detected by reconstructing the input data using the decoder and measuring the reconstruction error. High reconstruction errors indicated potential anomalies.
+
+After training both models independently, we fine-tuned their parameters to optimize their performance. We adjusted learning rates, batch sizes, and network architectures to improve the accuracy of anomaly detection. The accuracy and various performance scores, such as precision, recall, and F1-score, were calculated to evaluate the effectiveness of both models.
+
+Finally, we combined the strengths of both models to create a custom VAE-GAN model. In this hybrid approach, the VAE is used to encode the data into a latent space and decode it back, while the GAN’s discriminator is utilized to distinguish between real and reconstructed data. This combination leverages the VAE's ability to model the data distribution and the GAN’s capability to enhance the realism of the generated samples. The custom VAE-GAN model demonstrated superior performance in detecting anomalies in the BIDMC dataset, achieving higher accuracy and better handling of complex data patterns.
+
